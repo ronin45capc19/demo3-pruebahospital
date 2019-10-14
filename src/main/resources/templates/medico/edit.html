@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+	<h1>edit</h1>
+		    <div class="card">
+			<div class="card-header">edit</div>
+			<div class="card-body">
+			
+			<form th:action="@{/medico/save}" th:object="${medico}" method="post">
+				  <div class="form-group">
+				  
+				    <label for="nombre"> NOMBRE </label>
+				    <input type="text" class="form-control" placeholder="nombre del medico" th:field="*{nombremedico}">
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="especialidad"> ESPECIALIDAD </label>
+				    <select th:field="*{especialidad}" class="form-control" >
+				      <option th:each="especial: ${especialidades}" th:value="${especial.id_especialidad}" th:text="${especial.nombre_especialidad}"></option>				      
+				    </select>
+				  </div>
+				  
+				  <div class="form-group">
+				  
+				    <label for="nombre"> DIRECCION </label>
+				    <input type="text" class="form-control" placeholder="direccion del medico" th:field="*{direccion_medico}">
+				  </div>
+				  
+				   <div class="form-group">
+				  
+				    <label for="nombre"> TELEFONO </label>
+				    <input type="text" class="form-control" placeholder="telefono del medico" th:field="*{telefono_medico}">
+				  </div>
+	
+				  
+				 <button type="submit" class="btn btn-success">
+						<i class="fas fa-save"></i> Grabar
+					</button>
+					<a th:href="@{/medico}" class="btn btn-danger"> 
+						<i class="fas fa-undo"></i> Cancelar 
+					</a>
+					
+				</form>
+			
+		    </div>
+		    </div>
+		    
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
